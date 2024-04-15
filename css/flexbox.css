@@ -1,0 +1,183 @@
+/*se alinea la cabecera al formato deseado usando la propiedad
+diplay, justify content y align-items, se daja fija en el recorrido de la pagina 
+la cabecera usando position y top*/
+.cabecera__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+/*desactiva el icono de busqueda en la cabecera por default ya que
+se esta diseñando primeramente para dispositivos moviles 
+y es un requerimiento*/
+.cabecera__buscar__item{
+    display: none;
+}
+
+/*Ordena los elementos del rodapire uno detras de otro con la propiedad flex
+y con el comando flex-flow la orientacion es en columnas
+y con el comando wrap se permiten crear mas de una columna dependiendo del
+tamañao del footer*/
+.rodapie__container{
+    display: flex;
+    /*flex-direction: column;
+    flex-wrap: wrap;*/
+    flex-flow: column wrap;
+}
+
+
+/*da formato a la sección superior con el comando display para que sean continuos
+y da espacio de los objetos con el borde con align-items
+y con white-space y eso hace que el texto se quede en una 
+sola linea y con overflow añadimos la barra de desplazamiento
+y con gap damos un espacio entre objetos ahorrando lineas de codigo*/
+.superior__seccion__container{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: scroll;
+    gap: 15px;
+}
+
+.videos__item{
+    height: 303px;
+    width: 280px;
+    flex-grow: 1;
+}
+
+.videos__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+.descripcion-video {
+    margin-top: 1rem;
+    display: flex;
+    align-items: start; 
+    
+}
+
+.descripcion-video img {
+    margin-right: 1rem; 
+    flex-shrink: 0;  /*  Evita que la imagen se reduzca */
+    
+}
+
+.detalles__video {
+    flex-direction: column;
+    text-align:left;
+
+}
+
+.detalles__video h3{/*Genera el espaciado entre el titulo y el p*/
+    margin-bottom: 10px;
+}
+
+
+
+
+/*Genera el visual del contenedor del menu para la version mobile*/
+.menu__container{
+    position: fixed;
+    bottom: 0%;
+    height: 75px;
+    width: 100%;
+}
+
+/*hace que cada elemento vaya uno detras de otro
+a lo largo del espacio de la sección y con justify se distribyen uniformememnte
+y con el height nos aseguramos que ocupen todo el espacio*/
+.menu__lista{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+/*Alinea los iconos en el centro del menu*/
+.menu__lista li{
+    align-self: center;
+}
+
+.menu__itens{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+
+/*hace que los elementos de la lista que no se quieren 
+visualizar se dejen de observar*/
+.menu__lista:nth-child(2),.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+    display: none;
+}
+
+@media (min-width:834px) {
+    /*se activa el icono de busqueda una vez que el display es de 834 pc o mas*/
+    .cabecera__buscar__item{
+        display: block;
+    }
+
+    /*Se añade un espacido entre las secciones cuando el displa es de 934px o mas*/
+    .rodapie__container{
+        justify-content: space-between;
+    }
+
+    .menu__container{
+        left: 0%;
+        height: auto;
+        width: 74px;  
+        top: 80px; 
+    }
+    .menu__lista{
+        flex-direction: column;
+        justify-content:flex-start;
+        padding-top: 15px;
+        gap:50px;
+    }
+
+}
+
+@media(min-width:1440px){
+    .menu__container{
+        width: 239px;
+        overflow: scroll;
+    }
+
+    .menu__lista:nth-child(2),.menu__lista:nth-child(3),
+    .menu__lista:nth-child(4){
+        display: flex;
+    }
+
+    .menu__lista{
+        height: auto;
+        padding: 20px 17px 20px 15px;
+        gap:15px;
+    }
+
+    .menu__lista:nth-child(3){
+        flex-direction: column-reverse;
+    }
+
+    .menu__itens{
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .videojuegos{
+        order:3;
+    }
+    .peliculas{
+
+        order:2;
+    }
+    .premium{
+        order:1;
+    }
+}
+
